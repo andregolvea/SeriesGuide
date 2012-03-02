@@ -1,3 +1,4 @@
+
 package com.jakewharton.trakt.services;
 
 import com.google.myjson.JsonArray;
@@ -6,6 +7,7 @@ import com.google.myjson.reflect.TypeToken;
 import com.jakewharton.trakt.TraktApiBuilder;
 import com.jakewharton.trakt.TraktApiService;
 import com.jakewharton.trakt.entities.Response;
+import com.jakewharton.trakt.entities.Share;
 import com.jakewharton.trakt.entities.Shout;
 import com.jakewharton.trakt.entities.TvEntity;
 import com.jakewharton.trakt.entities.TvShow;
@@ -17,10 +19,13 @@ import java.util.List;
 
 public class ShowService extends TraktApiService {
     /**
-     * <p>Notify Trakt that a user has stopped watching a show.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has stopped watching a show.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @return Builder instance.
      */
     public CancelWatchingBuilder cancelWatching() {
@@ -29,7 +34,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add unwatched episodes to your library.
-     *
+     * 
      * @param imdbId Show IMDB ID.
      * @return Builder instance.
      */
@@ -39,7 +44,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add unwatched episodes to your library.
-     *
+     * 
      * @param tvdbId Show TVDB ID.
      * @return Builder instance.
      */
@@ -49,7 +54,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add unwatched episodes to your library.
-     *
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -60,7 +65,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add episodes watched outside of trakt to your library.
-     *
+     * 
      * @param imdbId Show IMDB ID.
      * @return Builder instance.
      */
@@ -70,7 +75,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add episodes watched outside of trakt to your library.
-     *
+     * 
      * @param tvdbId Show TVDB ID.
      * @return Builder instance.
      */
@@ -80,7 +85,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add episodes watched outside of trakt to your library.
-     *
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -91,7 +96,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns information for an episode including ratings.
-     *
+     * 
      * @param tvdbId The TVDB ID.
      * @param season The season number. Use 0 if you want the specials.
      * @param episode The episode number.
@@ -103,10 +108,10 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns information for an episode including ratings.
-     *
+     * 
      * @param title Either the slug (i.e. the-walking-dead) or TVDB ID. You can
-     * get a show's slug by browsing the website and looking at the URL when on
-     * a show summary page.
+     *            get a show's slug by browsing the website and looking at the
+     *            URL when on a show summary page.
      * @param season The season number. Use 0 if you want the specials.
      * @param episode The episode number.
      * @return Builder instance.
@@ -117,7 +122,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove episodes from your library collection.
-     *
+     * 
      * @param imdbId Show IMDB ID.
      * @return Builder instance.
      */
@@ -127,7 +132,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove episodes from your library collection.
-     *
+     * 
      * @param tvdbId Show TVDB ID.
      * @return Builder instance.
      */
@@ -137,7 +142,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove episodes from your library collection.
-     *
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -148,7 +153,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove episodes watched outside of trakt from your library.
-     *
+     * 
      * @param imdbId Show IMDB ID.
      * @return Builder instance.
      */
@@ -158,7 +163,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove episodes watched outside of trakt from your library.
-     *
+     * 
      * @param tvdbId Show TVDB ID.
      * @return Builder instance.
      */
@@ -168,7 +173,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove episodes watched outside of trakt from your library.
-     *
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -179,7 +184,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove one or more episodes for a specific show from your watchlist.
-     *
+     * 
      * @param imdbId Show IMDB ID.
      * @return Builder instance.
      */
@@ -189,7 +194,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove one or more episodes for a specific show from your watchlist.
-     *
+     * 
      * @param tvdbId Show TVDB ID.
      * @return Builder instance.
      */
@@ -199,7 +204,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove one or more episodes for a specific show from your watchlist.
-     *
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -210,10 +215,10 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns a array of all users watching an episode.
-     *
+     * 
      * @param title Either the slug (i.e. the-walking-dead) or TVDB ID. You can
-     * get a show's slug by browsing the website and looking at the URL when on
-     * a show summary page.
+     *            get a show's slug by browsing the website and looking at the
+     *            URL when on a show summary page.
      * @param season The season number. Use 0 if you want the specials.
      * @param episode The episode number.
      * @return Builder instance.
@@ -224,7 +229,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add one or more episodes for a specific show to your watchlist.
-     *
+     * 
      * @param imdbId Show IMDB ID.
      * @return Builder instance.
      */
@@ -234,7 +239,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add one or more episodes for a specific show to your watchlist.
-     *
+     * 
      * @param tvdbId Show TVDB ID.
      * @return Builder instance.
      */
@@ -244,7 +249,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add one or more episodes for a specific show to your watchlist.
-     *
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -254,12 +259,15 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify Trakt that a user has finished watching a show. This commits
-     * the show to the users profile. You should use show/watching prior to
-     * calling this method.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has finished watching a show. This commits the
+     * show to the users profile. You should use show/watching prior to calling
+     * this method.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param imdbId IMDB ID for the show.
      * @return Builder instance.
      */
@@ -268,12 +276,15 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify Trakt that a user has finished watching a show. This commits
-     * the show to the users profile. You should use show/watching prior to
-     * calling this method.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has finished watching a show. This commits the
+     * show to the users profile. You should use show/watching prior to calling
+     * this method.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param tvdbId TVDB ID for the show.
      * @return Builder instance.
      */
@@ -282,12 +293,15 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify Trakt that a user has finished watching a show. This commits
-     * the show to the users profile. You should use show/watching prior to
-     * calling this method.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has finished watching a show. This commits the
+     * show to the users profile. You should use show/watching prior to calling
+     * this method.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -298,10 +312,10 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns detailed episode info for a specific season of a show.
-     *
+     * 
      * @param query Either the slug (i.e. the-walking-dead) or TVDB ID. You can
-     * get a show's slug by browsing the website and looking at the URL when on
-     * a show summary page.
+     *            get a show's slug by browsing the website and looking at the
+     *            URL when on a show summary page.
      * @param season The season number. Use 0 if you want the specials.
      * @return Builder instance.
      */
@@ -311,10 +325,10 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns basic season info for a show.
-     *
+     * 
      * @param query Either the slug (i.e. the-walking-dead) or TVDB ID. You can
-     * get a show's slug by browsing the website and looking at the URL when on
-     * a show summary page.
+     *            get a show's slug by browsing the website and looking at the
+     *            URL when on a show summary page.
      * @return Builder instance.
      */
     public SeasonsBuilder seasons(String query) {
@@ -324,10 +338,10 @@ public class ShowService extends TraktApiService {
     /**
      * Returns information for a TV show including ratings, top watchers, and
      * most watched episodes.
-     *
+     * 
      * @param title Either the slug (i.e. the-walking-dead) or TVDB ID. You can
-     * get a show's slug by browsing the website and looking at the URL when on
-     * a show summary page.
+     *            get a show's slug by browsing the website and looking at the
+     *            URL when on a show summary page.
      * @return Builder instance.
      */
     public SummaryBuilder summary(String title) {
@@ -336,7 +350,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns all shows being watched right now.
-     *
+     * 
      * @return Builder instance.
      */
     public TrendingBuilder trending() {
@@ -344,8 +358,9 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * Remove an entire show (including all episodes) from your library collection.
-     *
+     * Remove an entire show (including all episodes) from your library
+     * collection.
+     * 
      * @param imdbId IMDB ID for the show.
      * @return Builder instance.
      */
@@ -354,8 +369,9 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * Remove an entire show (including all episodes) from your library collection.
-     *
+     * Remove an entire show (including all episodes) from your library
+     * collection.
+     * 
      * @param tvdbId TVDB ID for the show.
      * @return Builder instance.
      */
@@ -364,8 +380,9 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * Remove an entire show (including all episodes) from your library collection.
-     *
+     * Remove an entire show (including all episodes) from your library
+     * collection.
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -376,7 +393,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Remove one or more shows from your watchlist.
-     *
+     * 
      * @return Builder instance.
      */
     public UnwatchlistBuilder unwatchlist() {
@@ -384,10 +401,13 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify Trakt that a user has started watching a show.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has started watching a show.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param imdbId IMDB ID for the show.
      * @return Builder instance.
      */
@@ -396,10 +416,13 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify Trakt that a user has started watching a show.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has started watching a show.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param tvdbId TVDB ID for the show.
      * @return Builder instance.
      */
@@ -408,10 +431,13 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify Trakt that a user has started watching a show.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify Trakt that a user has started watching a show.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -422,10 +448,10 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns a array of all users watching a show.
-     *
+     * 
      * @param query Either the slug (i.e. the-walking-dead) or TVDB ID. You can
-     * get a show's slug by browsing the website and looking at the URL when on
-     * a show summary page.
+     *            get a show's slug by browsing the website and looking at the
+     *            URL when on a show summary page.
      * @return Builder instance.
      */
     public WatchingNowBuilder watchingNow(String query) {
@@ -434,7 +460,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Add one or more shows to your watchlist.
-     *
+     * 
      * @return Builder instance.
      */
     public WatchlistBuilder watchlist() {
@@ -443,7 +469,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns all shouts for a show. Most recent shouts returned first.
-     *
+     * 
      * @param title Show title.
      * @return Builder instance.
      */
@@ -453,7 +479,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns all shouts for a show. Most recent shouts returned first.
-     *
+     * 
      * @param tvdbId TVDB ID.
      * @return Builder instance.
      */
@@ -463,7 +489,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns all shouts for an episode. Most recent shouts returned first.
-     *
+     * 
      * @param title Show title.
      * @param season The season number. Use 0 if you want the specials.
      * @param episode The episode number.
@@ -475,7 +501,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Returns all shouts for an episode. Most recent shouts returned first.
-     *
+     * 
      * @param tvdbId TMDB ID.
      * @param season The season number. Use 0 if you want the specials.
      * @param episode The episode number.
@@ -487,7 +513,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Get the top 10 related shows.
-     *
+     * 
      * @param slug Show title slug.
      * @return Builder instance.
      */
@@ -497,7 +523,7 @@ public class ShowService extends TraktApiService {
 
     /**
      * Get the top 10 related shows.
-     *
+     * 
      * @param tvdbId TVDB ID.
      * @return Builder instance.
      */
@@ -506,13 +532,16 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Check into a show on trakt. Think of this method as in between a seen
-     * and a scrobble. After checking in, the trakt will automatically display
-     * it as watching then switch over to watched status once the duration has
-     * elapsed.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Check into a show on trakt. Think of this method as in between a seen and
+     * a scrobble. After checking in, the trakt will automatically display it as
+     * watching then switch over to watched status once the duration has
+     * elapsed.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param tvdbId TVDB ID for the show.
      * @return Builder instance.
      */
@@ -521,13 +550,16 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Check into a show on trakt. Think of this method as in between a seen
-     * and a scrobble. After checking in, the trakt will automatically display
-     * it as watching then switch over to watched status once the duration has
-     * elapsed.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Check into a show on trakt. Think of this method as in between a seen and
+     * a scrobble. After checking in, the trakt will automatically display it as
+     * watching then switch over to watched status once the duration has
+     * elapsed.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @param title Show title.
      * @param year Show year.
      * @return Builder instance.
@@ -537,31 +569,41 @@ public class ShowService extends TraktApiService {
     }
 
     /**
-     * <p>Notify trakt that a user wants to cancel their current check in.</p>
-     *
-     * <p><em>Warning</em>: This method requires a developer API key.</p>
-     *
+     * <p>
+     * Notify trakt that a user wants to cancel their current check in.
+     * </p>
+     * <p>
+     * <em>Warning</em>: This method requires a developer API key.
+     * </p>
+     * 
      * @return Builder instance.
      */
     public CancelCheckinBuilder cancelCheckin() {
         return new CancelCheckinBuilder(this);
     }
 
-
     public static final class CancelWatchingBuilder extends TraktApiBuilder<Response> {
         private static final String URI = "/show/cancelwatching/" + FIELD_API_KEY;
 
         private CancelWatchingBuilder(ShowService service) {
-            super(service, new TypeToken<Response>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Response>() {
+            }, URI, HttpMethod.Post);
         }
     }
+
     public static final class EpisodeLibraryBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_EPISODES = "episodes";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
 
         private static final String URI = "/show/episode/library/" + FIELD_API_KEY;
@@ -569,14 +611,15 @@ public class ShowService extends TraktApiService {
         private JsonArray episodeList;
 
         private EpisodeLibraryBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.episodeList = new JsonArray();
         }
 
         /**
          * Show IMDB ID.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -587,7 +630,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -598,7 +641,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -609,7 +652,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -620,7 +663,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add an episode to the list.
-         *
+         * 
          * @param season Episode's season number.
          * @param episode Episode's number.
          * @return Builder instance.
@@ -635,17 +678,24 @@ public class ShowService extends TraktApiService {
 
         @Override
         protected void preFireCallback() {
-            //Add the assembled movie list to the JSON post body.
+            // Add the assembled movie list to the JSON post body.
             this.postParameter(POST_EPISODES, this.episodeList);
         }
     }
+
     public static final class EpisodeSeenBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_EPISODES = "episodes";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
 
         private static final String URI = "/show/episode/seen/" + FIELD_API_KEY;
@@ -653,14 +703,15 @@ public class ShowService extends TraktApiService {
         private JsonArray episodeList;
 
         private EpisodeSeenBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.episodeList = new JsonArray();
         }
 
         /**
          * Show IMDB ID.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -671,7 +722,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -682,7 +733,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -693,7 +744,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -704,7 +755,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add an episode to the list.
-         *
+         * 
          * @param season Episode's season number.
          * @param episode Episode's number.
          * @return Builder instance.
@@ -719,20 +770,23 @@ public class ShowService extends TraktApiService {
 
         @Override
         protected void preFireCallback() {
-            //Add the assembled movie list to the JSON post body.
+            // Add the assembled movie list to the JSON post body.
             this.postParameter(POST_EPISODES, this.episodeList);
         }
     }
+
     public static final class EpisodeSummaryBuilder extends TraktApiBuilder<TvEntity> {
-        private static final String URI = "/show/episode/summary.json/" + FIELD_API_KEY + "/" + FIELD_TITLE + "/" + FIELD_SEASON + "/" + FIELD_EPISODE;
+        private static final String URI = "/show/episode/summary.json/" + FIELD_API_KEY + "/"
+                + FIELD_TITLE + "/" + FIELD_SEASON + "/" + FIELD_EPISODE;
 
         private EpisodeSummaryBuilder(ShowService service) {
-            super(service, new TypeToken<TvEntity>() {}, URI);
+            super(service, new TypeToken<TvEntity>() {
+            }, URI);
         }
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -743,7 +797,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -754,7 +808,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show season.
-         *
+         * 
          * @param season Value.
          * @return Builder instance.
          */
@@ -765,7 +819,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show episode.
-         *
+         * 
          * @param episode Value.
          * @return Builder instance.
          */
@@ -774,13 +828,20 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class EpisodeUnlibraryBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_EPISODES = "episodes";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
 
         private static final String URI = "/show/episode/unlibrary/" + FIELD_API_KEY;
@@ -788,14 +849,15 @@ public class ShowService extends TraktApiService {
         private JsonArray episodeList;
 
         private EpisodeUnlibraryBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.episodeList = new JsonArray();
         }
 
         /**
          * Show IMDB ID.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -806,7 +868,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -817,7 +879,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -828,7 +890,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -839,7 +901,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add an episode to the list.
-         *
+         * 
          * @param season Episode's season number.
          * @param episode Episode's number.
          * @return Builder instance.
@@ -854,17 +916,24 @@ public class ShowService extends TraktApiService {
 
         @Override
         protected void preFireCallback() {
-            //Add the assembled movie list to the JSON post body.
+            // Add the assembled movie list to the JSON post body.
             this.postParameter(POST_EPISODES, this.episodeList);
         }
     }
+
     public static final class EpisodeUnseenBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_EPISODES = "episodes";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
 
         private static final String URI = "/show/episode/unseen/" + FIELD_API_KEY;
@@ -872,14 +941,15 @@ public class ShowService extends TraktApiService {
         private JsonArray episodeList;
 
         private EpisodeUnseenBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.episodeList = new JsonArray();
         }
 
         /**
          * Show IMDB ID.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -890,7 +960,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -901,7 +971,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -912,7 +982,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -923,7 +993,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add an episode to the list.
-         *
+         * 
          * @param season Episode's season number.
          * @param episode Episode's number.
          * @return Builder instance.
@@ -938,17 +1008,24 @@ public class ShowService extends TraktApiService {
 
         @Override
         protected void preFireCallback() {
-            //Add the assembled movie list to the JSON post body.
+            // Add the assembled movie list to the JSON post body.
             this.postParameter(POST_EPISODES, this.episodeList);
         }
     }
+
     public static final class EpisodeUnwatchlistBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_EPISODES = "episodes";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
 
         private static final String URI = "/show/episode/unwatchlist/" + FIELD_API_KEY;
@@ -956,14 +1033,15 @@ public class ShowService extends TraktApiService {
         private JsonArray episodeList;
 
         private EpisodeUnwatchlistBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.episodeList = new JsonArray();
         }
 
         /**
          * Show IMDB ID.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -974,7 +1052,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -985,7 +1063,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -996,7 +1074,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -1007,7 +1085,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add an episode to the list.
-         *
+         * 
          * @param season Episode's season number.
          * @param episode Episode's number.
          * @return Builder instance.
@@ -1022,22 +1100,25 @@ public class ShowService extends TraktApiService {
 
         @Override
         protected void preFireCallback() {
-            //Add the assembled movie list to the JSON post body.
+            // Add the assembled movie list to the JSON post body.
             this.postParameter(POST_EPISODES, this.episodeList);
         }
     }
+
     public static final class EpisodeWatchingNowBuilder extends TraktApiBuilder<List<UserProfile>> {
-        private static final String URI = "/show/episode/watchingnow.json/" + FIELD_API_KEY + "/" + FIELD_TITLE + "/" + FIELD_SEASON + "/" + FIELD_EPISODE;
+        private static final String URI = "/show/episode/watchingnow.json/" + FIELD_API_KEY + "/"
+                + FIELD_TITLE + "/" + FIELD_SEASON + "/" + FIELD_EPISODE;
 
         private EpisodeWatchingNowBuilder(ShowService service) {
-            super(service, new TypeToken<List<UserProfile>>() {}, URI);
+            super(service, new TypeToken<List<UserProfile>>() {
+            }, URI);
         }
 
         /**
          * Either the slug (i.e. the-walking-dead) or TVDB ID. You can get a
          * show's slug by browsing the website and looking at the URL when on a
          * show summary page.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1048,7 +1129,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * The season number. Use 0 if you want the specials.
-         *
+         * 
          * @param season Value.
          * @return Builder instance.
          */
@@ -1059,7 +1140,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * The episode number.
-         *
+         * 
          * @param episode Value
          * @return Builder instance.
          */
@@ -1068,13 +1149,20 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class EpisodeWatchlistBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_EPISODES = "episodes";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
 
         private static final String URI = "/show/episode/watchlist/" + FIELD_API_KEY;
@@ -1082,14 +1170,15 @@ public class ShowService extends TraktApiService {
         private JsonArray episodeList;
 
         private EpisodeWatchlistBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.episodeList = new JsonArray();
         }
 
         /**
          * Show IMDB ID.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -1100,7 +1189,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show TVDB ID.
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -1111,7 +1200,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1122,7 +1211,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -1133,7 +1222,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add an episode to the list.
-         *
+         * 
          * @param season Episode's season number.
          * @param episode Episode's number.
          * @return Builder instance.
@@ -1148,30 +1237,39 @@ public class ShowService extends TraktApiService {
 
         @Override
         protected void preFireCallback() {
-            //Add the assembled movie list to the JSON post body.
+            // Add the assembled movie list to the JSON post body.
             this.postParameter(POST_EPISODES, this.episodeList);
         }
     }
+
     public static final class ScrobbleBuilder extends TraktApiBuilder<Response> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
+
         private static final String POST_DURATION = "duration";
+
         private static final String POST_PROGRESS = "progress";
 
         private static final String URI = "/show/scrobble/" + FIELD_API_KEY;
 
         private ScrobbleBuilder(ShowService service) {
-            super(service, new TypeToken<Response>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Response>() {
+            }, URI, HttpMethod.Post);
             this.includeScrobbleDebugStrings();
         }
 
         /**
          * IMDB ID for the show.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -1182,7 +1280,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * TVDB ID for the show.
-         *
+         * 
          * @param tmdbId Value.
          * @return Builder instance.
          */
@@ -1193,7 +1291,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Movie title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1204,7 +1302,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Movie year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -1215,7 +1313,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show season. Send 0 if watching a special.
-         *
+         * 
          * @param season Value.
          * @return Builder instance.
          */
@@ -1226,7 +1324,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show episode.
-         *
+         * 
          * @param episode Value.
          * @return Builder instance.
          */
@@ -1237,7 +1335,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Duration (in minutes).
-         *
+         * 
          * @param duration Value.
          * @return Builder instance.
          */
@@ -1250,7 +1348,7 @@ public class ShowService extends TraktApiService {
          * Percent progress (0-100). It is recommended to call the watching API
          * every 15 minutes, then call the scrobble API near the end of the
          * movie to lock it in.
-         *
+         * 
          * @param progress Value.
          * @return Builder instance.
          */
@@ -1262,47 +1360,54 @@ public class ShowService extends TraktApiService {
         @Override
         protected void performValidation() {
             assert this.hasPostParameter(POST_TVDB_ID)
-            || (this.hasPostParameter(POST_TITLE) && this.hasPostParameter(POST_YEAR))
-            : "Either IMDB ID, TMDB ID, or both title and year is required.";
+                    || (this.hasPostParameter(POST_TITLE) && this.hasPostParameter(POST_YEAR)) : "Either IMDB ID, TMDB ID, or both title and year is required.";
             assert this.hasPostParameter(POST_SEASON) : "Season is required.";
             assert this.hasPostParameter(POST_EPISODE) : "Episode is required.";
             assert this.hasPostParameter(POST_DURATION) : "Duration is required.";
             assert this.hasPostParameter(POST_PROGRESS) : "Progress is required.";
         }
     }
+
     public static final class SeasonBuilder extends TraktApiBuilder<List<TvShowEpisode>> {
-        private static final String URI = "/show/season.json/" + FIELD_API_KEY + "/" + FIELD_QUERY + "/" + FIELD_SEASON;
+        private static final String URI = "/show/season.json/" + FIELD_API_KEY + "/" + FIELD_QUERY
+                + "/" + FIELD_SEASON;
 
         private SeasonBuilder(ShowService service, String query, int season) {
-            super(service, new TypeToken<List<TvShowEpisode>>() {}, URI);
+            super(service, new TypeToken<List<TvShowEpisode>>() {
+            }, URI);
 
             this.field(FIELD_QUERY, query);
             this.field(FIELD_SEASON, season);
         }
     }
+
     public static final class SeasonsBuilder extends TraktApiBuilder<List<TvShowSeason>> {
         private static final String URI = "/show/seasons.json/" + FIELD_API_KEY + "/" + FIELD_QUERY;
 
         private SeasonsBuilder(ShowService service, String query) {
-            super(service, new TypeToken<List<TvShowSeason>>() {}, URI);
+            super(service, new TypeToken<List<TvShowSeason>>() {
+            }, URI);
 
             this.field(FIELD_QUERY, query);
         }
     }
+
     public static final class SummaryBuilder extends TraktApiBuilder<TvShow> {
         private static final String EXTENDED = "extended";
 
-        private static final String URI = "/show/summary.json/" + FIELD_API_KEY + "/" + FIELD_TITLE + "/" + FIELD_EXTENDED;
+        private static final String URI = "/show/summary.json/" + FIELD_API_KEY + "/" + FIELD_TITLE
+                + "/" + FIELD_EXTENDED;
 
         private SummaryBuilder(ShowService service) {
-            super(service, new TypeToken<TvShow>() {}, URI);
+            super(service, new TypeToken<TvShow>() {
+            }, URI);
         }
 
         /**
          * Either the slug (i.e. the-walking-dead) or TVDB ID. You can get a
          * show's slug by browsing the website and looking at the URL when on a
          * show summary page.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1315,7 +1420,7 @@ public class ShowService extends TraktApiService {
          * Returns complete season and episode info. Only send this if you
          * really need the full dump. Use the show/seasons and show/season
          * methods if you only need some of the season or episode info.
-         *
+         * 
          * @return Builder instance.
          */
         public SummaryBuilder extended() {
@@ -1323,28 +1428,35 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class TrendingBuilder extends TraktApiBuilder<List<TvShow>> {
         private static final String URI = "/shows/trending.json/" + FIELD_API_KEY;
 
         private TrendingBuilder(ShowService service) {
-            super(service, new TypeToken<List<TvShow>>() {}, URI);
+            super(service, new TypeToken<List<TvShow>>() {
+            }, URI);
         }
     }
+
     public static final class UnlibraryBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
 
         private static final String URI = "/show/unlibrary/" + FIELD_API_KEY;
 
         private UnlibraryBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
         }
 
         /**
          * IMDB ID for the show.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -1355,7 +1467,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * TVDB ID for the show.
-         *
+         * 
          * @param tmdbId Value.
          * @return Builder instance.
          */
@@ -1366,7 +1478,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Movie title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1377,7 +1489,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Movie year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -1386,11 +1498,16 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class UnwatchlistBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_SHOWS = "shows";
 
         private static final String URI = "/show/unwatchlist/" + FIELD_API_KEY;
@@ -1398,14 +1515,15 @@ public class ShowService extends TraktApiService {
         private JsonArray showList;
 
         private UnwatchlistBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.showList = new JsonArray();
         }
 
         /**
          * Add a show to be removed.
-         *
+         * 
          * @param imdbId IMDB ID for the show.
          * @return Builder instance.
          */
@@ -1418,7 +1536,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add a show to be removed.
-         *
+         * 
          * @param tvdbId TVDB ID for the show.
          * @return Builder instance.
          */
@@ -1431,7 +1549,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add a show to be removed.
-         *
+         * 
          * @param title Title for the show.
          * @param year Year of the show.
          * @return Builder instance.
@@ -1449,26 +1567,35 @@ public class ShowService extends TraktApiService {
             this.postParameter(POST_SHOWS, this.showList);
         }
     }
+
     public static final class WatchingBuilder extends TraktApiBuilder<Response> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
+
         private static final String POST_DURATION = "duration";
+
         private static final String POST_PROGRESS = "progress";
 
         private static final String URI = "/show/watching/" + FIELD_API_KEY;
 
         private WatchingBuilder(ShowService service) {
-            super(service, new TypeToken<Response>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Response>() {
+            }, URI, HttpMethod.Post);
             this.includeScrobbleDebugStrings();
         }
 
         /**
          * IMDB ID for the show.
-         *
+         * 
          * @param imdbId Value.
          * @return Builder instance.
          */
@@ -1479,7 +1606,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * TVDB ID for the show.
-         *
+         * 
          * @param tmdbId Value.
          * @return Builder instance.
          */
@@ -1490,7 +1617,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Movie title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1501,7 +1628,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Movie year.
-         *
+         * 
          * @param year Value.
          * @return Builder instance.
          */
@@ -1512,7 +1639,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show season. Send 0 if watching a special.
-         *
+         * 
          * @param season Value.
          * @return Builder instance.
          */
@@ -1523,7 +1650,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show episode.
-         *
+         * 
          * @param episode Value.
          * @return Builder instance.
          */
@@ -1534,7 +1661,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Duration (in minutes).
-         *
+         * 
          * @param duration Value.
          * @return Builder instance.
          */
@@ -1547,7 +1674,7 @@ public class ShowService extends TraktApiService {
          * Percent progress (0-100). It is recommended to call the watching API
          * every 15 minutes, then call the scrobble API near the end of the
          * movie to lock it in.
-         *
+         * 
          * @param progress Value.
          * @return Builder instance.
          */
@@ -1559,26 +1686,28 @@ public class ShowService extends TraktApiService {
         @Override
         protected void performValidation() {
             assert this.hasPostParameter(POST_TVDB_ID)
-            || (this.hasPostParameter(POST_TITLE) && this.hasPostParameter(POST_YEAR))
-            : "Either IMDB ID, TMDB ID, or both title and year is required.";
+                    || (this.hasPostParameter(POST_TITLE) && this.hasPostParameter(POST_YEAR)) : "Either IMDB ID, TMDB ID, or both title and year is required.";
             assert this.hasPostParameter(POST_SEASON) : "Season is required.";
             assert this.hasPostParameter(POST_EPISODE) : "Episode is required.";
             assert this.hasPostParameter(POST_DURATION) : "Duration is required.";
             assert this.hasPostParameter(POST_PROGRESS) : "Progress is required.";
         }
     }
+
     public static final class WatchingNowBuilder extends TraktApiBuilder<List<UserProfile>> {
-        private static final String URI = "/show/watchingnow.json/" + FIELD_API_KEY + "/" + FIELD_QUERY;
+        private static final String URI = "/show/watchingnow.json/" + FIELD_API_KEY + "/"
+                + FIELD_QUERY;
 
         private WatchingNowBuilder(ShowService service) {
-            super(service, new TypeToken<List<UserProfile>>() {}, URI);
+            super(service, new TypeToken<List<UserProfile>>() {
+            }, URI);
         }
 
         /**
          * Either the slug (i.e. the-walking-dead) or TVDB ID. You can get a
-         * show's slug by browsing the website and looking at the URL when on
-         * a show summary page.
-         *
+         * show's slug by browsing the website and looking at the URL when on a
+         * show summary page.
+         * 
          * @param query Value.
          * @return Builder instance.
          */
@@ -1587,11 +1716,16 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class WatchlistBuilder extends TraktApiBuilder<Void> {
         private static final String POST_IMDB_ID = "imdb_id";
+
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_SHOWS = "shows";
 
         private static final String URI = "/show/watchlist/" + FIELD_API_KEY;
@@ -1599,14 +1733,15 @@ public class ShowService extends TraktApiService {
         private JsonArray showList;
 
         private WatchlistBuilder(ShowService service) {
-            super(service, new TypeToken<Void>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Void>() {
+            }, URI, HttpMethod.Post);
 
             this.showList = new JsonArray();
         }
 
         /**
          * Add a show to be added.
-         *
+         * 
          * @param imdbId IMDB ID for the show.
          * @return Builder instance.
          */
@@ -1619,7 +1754,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add a show to be added.
-         *
+         * 
          * @param tvdbId TVDB ID for the show.
          * @return Builder instance.
          */
@@ -1632,7 +1767,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Add a show to be added.
-         *
+         * 
          * @param title Title for the show.
          * @param year Year of the show.
          * @return Builder instance.
@@ -1650,16 +1785,18 @@ public class ShowService extends TraktApiService {
             this.postParameter(POST_SHOWS, this.showList);
         }
     }
+
     public static final class ShoutsBuilder extends TraktApiBuilder<List<Shout>> {
         private static final String URI = "/show/shouts.json/" + FIELD_API_KEY + "/" + FIELD_TITLE;
 
         private ShoutsBuilder(ShowService service) {
-            super(service, new TypeToken<List<Shout>>() {}, URI);
+            super(service, new TypeToken<List<Shout>>() {
+            }, URI);
         }
 
         /**
          * Set show title.
-         *
+         * 
          * @param title Value.
          * @return Builder instance.
          */
@@ -1670,7 +1807,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Set show TVDB ID
-         *
+         * 
          * @param tvdbId Value.
          * @return Builder instance.
          */
@@ -1679,16 +1816,19 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class EpisodeShoutsBuilder extends TraktApiBuilder<List<Shout>> {
-        private static final String URI = "/show/episode/shouts.json/" + FIELD_API_KEY + "/" + FIELD_TITLE + "/" + FIELD_SEASON + "/" + FIELD_EPISODE;
+        private static final String URI = "/show/episode/shouts.json/" + FIELD_API_KEY + "/"
+                + FIELD_TITLE + "/" + FIELD_SEASON + "/" + FIELD_EPISODE;
 
         private EpisodeShoutsBuilder(ShowService service) {
-            super(service, new TypeToken<List<Shout>>() {}, URI);
+            super(service, new TypeToken<List<Shout>>() {
+            }, URI);
         }
 
         /**
          * Set show title or IMDB ID.
-         *
+         * 
          * @param titleOrImdbId Value.
          * @return Builder instance.
          */
@@ -1699,7 +1839,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Set show TMDB ID.
-         *
+         * 
          * @param tmdbId Value.
          * @return Builder instance.
          */
@@ -1710,7 +1850,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Set episode season.
-         *
+         * 
          * @param season Value.
          * @return Builder instance.
          */
@@ -1721,7 +1861,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Set episode number.
-         *
+         * 
          * @param episode Value.
          * @return Builder instance.
          */
@@ -1730,19 +1870,23 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class RelatedBuilder extends TraktApiBuilder<List<TvShow>> {
         private static final String EXTENDED = "extended";
+
         private static final String HIDE_WATCHED = "hidewatched";
 
-        private static final String URI = "/show/related.json/" + FIELD_API_KEY + "/" + FIELD_TITLE + "/" + FIELD_EXTENDED + "/" + FIELD_HIDE_WATCHED;
+        private static final String URI = "/show/related.json/" + FIELD_API_KEY + "/" + FIELD_TITLE
+                + "/" + FIELD_EXTENDED + "/" + FIELD_HIDE_WATCHED;
 
         private RelatedBuilder(ShowService service) {
-            super(service, new TypeToken<List<TvShow>>() {}, URI);
+            super(service, new TypeToken<List<TvShow>>() {
+            }, URI);
         }
 
         /**
          * Show title.
-         *
+         * 
          * @param slug Show title slug.
          * @return Builder instance.
          */
@@ -1753,7 +1897,7 @@ public class ShowService extends TraktApiService {
 
         /**
          * Show ID.
-         *
+         * 
          * @param tvdbId TVDB ID.
          * @return Builder instance.
          */
@@ -1766,7 +1910,7 @@ public class ShowService extends TraktApiService {
          * Returns complete season and episode info. Only send this if you
          * really need the full dump. Use the show/seasons and show/season
          * methods if you only need some of the season or episode info.
-         *
+         * 
          * @return Builder instance.
          */
         public RelatedBuilder extended() {
@@ -1775,8 +1919,9 @@ public class ShowService extends TraktApiService {
         }
 
         /**
-         * If this parameter is set and valid auth is sent, shows with at least one play will be filtered out.
-         *
+         * If this parameter is set and valid auth is sent, shows with at least
+         * one play will be filtered out.
+         * 
          * @param hideWatched Value.
          * @return Builder instance.
          */
@@ -1787,20 +1932,31 @@ public class ShowService extends TraktApiService {
             return this;
         }
     }
+
     public static final class CheckinBuilder extends TraktApiBuilder<Response> {
         private static final String POST_TVDB_ID = "tvdb_id";
+
         private static final String POST_TITLE = "title";
+
         private static final String POST_YEAR = "year";
+
         private static final String POST_SEASON = "season";
+
         private static final String POST_EPISODE = "episode";
+
         private static final String POST_DURATION = "duration";
+
         private static final String POST_VENUE_ID = "venue_id";
+
         private static final String POST_VENUE_NAME = "venue_name";
+
+        private static final String POST_SHARE = "share";
 
         private static final String URI = "/show/checkin/" + FIELD_API_KEY;
 
         private CheckinBuilder(ShowService service) {
-            super(service, new TypeToken<Response>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Response>() {
+            }, URI, HttpMethod.Post);
             this.includeCheckinDebugStrings();
         }
 
@@ -1851,12 +2007,19 @@ public class ShowService extends TraktApiService {
             this.postParameter(POST_VENUE_NAME, venueName);
             return this;
         }
+
+        public CheckinBuilder share(Share share) {
+            this.postParameter(POST_SHARE, share);
+            return this;
+        }
     }
+
     public static final class CancelCheckinBuilder extends TraktApiBuilder<Response> {
         private static final String URI = "/show/cancelcheckin/" + FIELD_API_KEY;
 
         private CancelCheckinBuilder(ShowService service) {
-            super(service, new TypeToken<Response>() {}, URI, HttpMethod.Post);
+            super(service, new TypeToken<Response>() {
+            }, URI, HttpMethod.Post);
         }
     }
 }
