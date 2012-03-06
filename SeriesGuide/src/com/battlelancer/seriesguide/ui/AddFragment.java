@@ -4,14 +4,21 @@ package com.battlelancer.seriesguide.ui;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.battlelancer.seriesguide.R;
 import com.battlelancer.seriesguide.items.SearchResult;
+import com.battlelancer.seriesguide.ui.AddDialogFragment.OnAddShowListener;
 import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.battlelancer.seriesguide.util.Utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,11 +30,83 @@ public class AddFragment extends SherlockListFragment {
 
     protected AddAdapter mAdapter;
 
+    private OnAddShowListener mAddShowListener;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // so we don't have to do a network op each config change
         setRetainInstance(true);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mAddShowListener = (OnAddShowListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnAddShowListener");
+        }
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (Utils.isHoneycombOrHigher()) {
+            final ListView list = getListView();
+            list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+            list.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+
+                @Override
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                    // Here you can perform updates to the CAB due to
+                    // an invalidate() request
+                    return false;
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode mode) {
+                    // Here you can make any necessary updates to the activity
+                    // when the CAB is removed. By default, selected items are
+                    // deselected/unchecked.
+                }
+
+                @Override
+                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    // Inflate the menu for the CAB
+                    MenuInflater inflater = mode.getMenuInflater();
+                    inflater.inflate(R.menu.add_contextmenu, menu);
+                    return true;
+                }
+
+                @Override
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                    // Respond to clicks on the actions in the CAB
+                    switch (item.getItemId()) {
+                        case R.id.menu_selectall:
+                            return true;
+                        case R.id.menu_addbatch:
+                            // TODO support batch adding
+                            SearchResult show = mAdapter.getItem(list.getSelectedItemPosition());
+                            mAddShowListener.onAddShow(show);
+
+                            mode.finish();
+                            return true;
+                        default:
+                            return false;
+                    }
+                }
+
+                @Override
+                public void onItemCheckedStateChanged(ActionMode mode, int position, long id,
+                        boolean checked) {
+                    // Here you can do something when items are
+                    // selected/de-selected,
+                    // such as update the title in the CAB
+                }
+            });
+        }
     }
 
     @Override
