@@ -2,6 +2,7 @@
 package com.battlelancer.seriesguide.util;
 
 import com.battlelancer.seriesguide.Constants;
+import com.battlelancer.seriesguide.R;
 import com.battlelancer.seriesguide.items.Series;
 import com.battlelancer.seriesguide.provider.SeriesContract;
 import com.battlelancer.seriesguide.provider.SeriesContract.EpisodeSearch;
@@ -11,6 +12,8 @@ import com.battlelancer.seriesguide.provider.SeriesContract.Shows;
 import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
 import com.battlelancer.seriesguide.ui.UpcomingFragment.UpcomingQuery;
 import com.battlelancer.thetvdbapi.ImageCache;
+import com.jakewharton.trakt.ServiceManager;
+import com.jakewharton.trakt.services.ShowService;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
@@ -20,8 +23,10 @@ import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -180,6 +185,68 @@ public class DBUtils {
         context.getContentResolver()
                 .update(Episodes.buildEpisodeUri(episodeId), values, null, null);
         context.getContentResolver().notifyChange(Episodes.CONTENT_URI, null);
+    }
+
+    /**
+     * Mark an episode as seen/unseen on trakt using an AsyncTask.
+     * 
+     * @param context
+     * @param tvdbId
+     * @param season
+     * @param episode
+     * @param isSeen
+     */
+    public static void markEpisodeTrakt(final Context context, final int tvdbId, final int season,
+            final int episode, final boolean isSeen) {
+        // TODO Display an offline warning.
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (prefs.getBoolean(SeriesGuidePreferences.KEY_INTEGRATETRAKT, true)) {
+            new AsyncTask<Void, Void, Integer>() {
+                private static final int FAILED = -1;
+
+                private static final int OFFLINE = -2;
+
+                private static final int SUCCESS = 0;
+
+                @Override
+                protected Integer doInBackground(Void... params) {
+                    if (!Utils.isNetworkConnected(context)) {
+                        return OFFLINE;
+                    }
+                    try {
+                        ServiceManager manager = Utils.getServiceManagerWithAuth(context, false);
+                        ShowService showService = manager.showService();
+                        if (isSeen) {
+                            showService.episodeSeen(tvdbId).episode(season, episode).fire();
+                        } else {
+                            showService.episodeUnseen(tvdbId).episode(season, episode).fire();
+                        }
+                    } catch (Exception e) {
+                        return FAILED;
+                    }
+
+                    return SUCCESS;
+                }
+
+                protected void onPostExecute(Integer result) {
+                    if (result != SUCCESS) {
+                        String message;
+
+                        if (isSeen) {
+                            message = context.getString(R.string.trakt_seenfailed);
+                        } else {
+                            message = context.getString(R.string.trakt_unseenfailed);
+                        }
+                        if (result == OFFLINE) {
+                            message += " " + context.getString(R.string.offline);
+                        }
+
+                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    }
+                };
+
+            }.execute();
+        }
     }
 
     /**

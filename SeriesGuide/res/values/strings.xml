@@ -260,6 +260,9 @@
     <string name="traktcheckin_cancel">Cancel it</string>
     <string name="traktcheckin_inprogress">There is already a checkin in progress. Either cancel this checkin or wait %s before you can check in again.</string>
     <string name="traktcheckin_wait">I\'ll wait</string>
+    <string name="trakt_seenfailed">Failed to add episode as seen on trakt.</string>
+    <string name="trakt_unseenfailed">Failed to add episode as unseen on trakt.</string>
+    <string name="offline">Please connect to the internet.</string>
     <string name="checkinfailed">Check-In failed. Try disconnecting GetGlue.</string>
     <string name="oauthmessage">Authenticating SeriesGuide with GetGlue&#8230;</string>
     <string name="addtocalendar">Add to calendar</string>
