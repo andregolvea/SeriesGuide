@@ -96,7 +96,7 @@ public class ImageCache {
 
     private static final String TAG = "ImageCache";
 
-    private static final int HARD_CACHE_CAPACITY = 20;
+    private static final int HARD_CACHE_CAPACITY = 10;
 
     @SuppressWarnings("serial")
     private final HashMap<String, Bitmap> mHardBitmapCache = new LinkedHashMap<String, Bitmap>(

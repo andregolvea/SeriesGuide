@@ -10,6 +10,7 @@ import com.battlelancer.seriesguide.provider.SeriesContract;
 import com.battlelancer.seriesguide.provider.SeriesContract.Shows;
 import com.battlelancer.seriesguide.util.AnalyticsUtils;
 import com.battlelancer.seriesguide.util.DBUtils;
+import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.battlelancer.seriesguide.util.TaskManager;
 import com.battlelancer.seriesguide.util.UpdateTask;
 import com.battlelancer.seriesguide.util.Utils;
@@ -46,8 +47,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.animation.AnimationUtils;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -62,10 +61,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ShowsActivity extends BaseActivity implements AbsListView.OnScrollListener,
-        LoaderManager.LoaderCallbacks<Cursor>, ActionBar.OnNavigationListener {
-
-    private boolean mBusy;
+public class ShowsActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>,
+        ActionBar.OnNavigationListener {
 
     private static final int UPDATE_SUCCESS = 100;
 
@@ -188,7 +185,6 @@ public class ShowsActivity extends BaseActivity implements AbsListView.OnScrollL
                 startActivity(i);
             }
         });
-        list.setOnScrollListener(this);
         View emptyView = findViewById(R.id.empty);
         if (emptyView != null) {
             list.setEmptyView(emptyView);
@@ -909,12 +905,15 @@ public class ShowsActivity extends BaseActivity implements AbsListView.OnScrollL
 
         private int mLayout;
 
+        private ImageDownloader mImageDownloader;
+
         public SlowAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
             super(context, layout, c, from, to, flags);
 
             mLayoutInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             mLayout = layout;
+            mImageDownloader = ImageDownloader.getInstance(context);
         }
 
         @Override
@@ -984,16 +983,7 @@ public class ShowsActivity extends BaseActivity implements AbsListView.OnScrollL
 
             // set poster only when not busy scrolling
             final String path = mCursor.getString(ShowsQuery.POSTER);
-            if (!mBusy) {
-                // load poster
-                Utils.setPosterBitmap(viewHolder.poster, path, false, null);
-
-                // Null tag means the view has the correct data
-                viewHolder.poster.setTag(null);
-            } else {
-                // only load in-memory poster
-                Utils.setPosterBitmap(viewHolder.poster, path, true, null);
-            }
+            mImageDownloader.download(path + "thumb", viewHolder.poster);
 
             return convertView;
         }
@@ -1014,34 +1004,5 @@ public class ShowsActivity extends BaseActivity implements AbsListView.OnScrollL
         public TextView airsTime;
 
         public ImageView poster;
-    }
-
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-            int totalItemCount) {
-    }
-
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        switch (scrollState) {
-            case OnScrollListener.SCROLL_STATE_IDLE:
-                mBusy = false;
-
-                int count = view.getChildCount();
-                for (int i = 0; i < count; i++) {
-                    final ViewHolder holder = (ViewHolder) view.getChildAt(i).getTag();
-                    final ImageView poster = holder.poster;
-                    if (poster.getTag() != null) {
-                        Utils.setPosterBitmap(poster, (String) poster.getTag(), false, null);
-                        poster.setTag(null);
-                    }
-                }
-
-                break;
-            case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-                mBusy = false;
-                break;
-            case OnScrollListener.SCROLL_STATE_FLING:
-                mBusy = true;
-                break;
-        }
     }
 }

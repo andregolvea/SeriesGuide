@@ -361,7 +361,7 @@ public class ImageDownloader {
      * reference cache is too aggressively cleared by the Garbage Collector.
      */
 
-    private static final int HARD_CACHE_CAPACITY = 10;
+    private static final int HARD_CACHE_CAPACITY = 15;
 
     private static final int DELAY_BEFORE_PURGE = 5 * 1000; // in milliseconds
 

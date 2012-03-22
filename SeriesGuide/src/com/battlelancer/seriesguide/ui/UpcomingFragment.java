@@ -8,6 +8,7 @@ import com.battlelancer.seriesguide.provider.SeriesContract.Shows;
 import com.battlelancer.seriesguide.provider.SeriesGuideDatabase.Tables;
 import com.battlelancer.seriesguide.util.AnalyticsUtils;
 import com.battlelancer.seriesguide.util.DBUtils;
+import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.battlelancer.seriesguide.util.Utils;
 
 import android.content.Context;
@@ -31,15 +32,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class UpcomingFragment extends ListFragment implements
-        LoaderManager.LoaderCallbacks<Cursor>, OnScrollListener {
+public class UpcomingFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int MARK_WATCHED_ID = 0;
 
@@ -49,7 +47,6 @@ public class UpcomingFragment extends ListFragment implements
 
     private boolean mDualPane;
 
-    private boolean mBusy;
 
     /**
      * Data which has to be passed when creating {@link UpcomingFragment}. All
@@ -164,7 +161,6 @@ public class UpcomingFragment extends ListFragment implements
         final ListView list = getListView();
         list.setFastScrollEnabled(true);
         list.setDivider(null);
-        list.setOnScrollListener(this);
         list.setSelector(R.drawable.list_selector_holo_dark);
         list.setClipToPadding(Utils.isHoneycombOrHigher() ? false : true);
         final float scale = getResources().getDisplayMetrics().density;
@@ -298,6 +294,8 @@ public class UpcomingFragment extends ListFragment implements
 
         private SharedPreferences mPrefs;
 
+        private ImageDownloader mImageDownloader;
+
         public SlowAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
             super(context, layout, c, from, to, flags);
 
@@ -305,6 +303,7 @@ public class UpcomingFragment extends ListFragment implements
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             mLayout = layout;
             mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+            mImageDownloader = ImageDownloader.getInstance(context);
         }
 
         @Override
@@ -386,16 +385,7 @@ public class UpcomingFragment extends ListFragment implements
 
             // set poster only when not busy scrolling
             final String path = mCursor.getString(UpcomingQuery.SHOW_POSTER);
-            if (!mBusy) {
-                // load poster
-                Utils.setPosterBitmap(viewHolder.poster, path, false, null);
-
-                // Null tag means the view has the correct data
-                viewHolder.poster.setTag(null);
-            } else {
-                // only load in-memory poster
-                Utils.setPosterBitmap(viewHolder.poster, path, true, null);
-            }
+            mImageDownloader.download(path + "thumb", viewHolder.poster);
 
             return convertView;
         }
@@ -416,34 +406,5 @@ public class UpcomingFragment extends ListFragment implements
         public TextView network;
 
         public ImageView poster;
-    }
-
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-            int totalItemCount) {
-    }
-
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        switch (scrollState) {
-            case OnScrollListener.SCROLL_STATE_IDLE:
-                mBusy = false;
-
-                int count = view.getChildCount();
-                for (int i = 0; i < count; i++) {
-                    final ViewHolder holder = (ViewHolder) view.getChildAt(i).getTag();
-                    final ImageView poster = holder.poster;
-                    if (poster.getTag() != null) {
-                        Utils.setPosterBitmap(poster, (String) poster.getTag(), false, null);
-                        poster.setTag(null);
-                    }
-                }
-
-                break;
-            case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-                mBusy = false;
-                break;
-            case OnScrollListener.SCROLL_STATE_FLING:
-                mBusy = true;
-                break;
-        }
     }
 }
